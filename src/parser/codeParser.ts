@@ -6,7 +6,8 @@ function codeParser(sourceCode) {
   const parserOptions = {
     plugins: [
       "jsx",
-      "typescript"
+      "typescript",
+      "objectRestSpread"
     ],
     sourceType: "module",
     tokens: true,
