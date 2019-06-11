@@ -3,7 +3,11 @@ All notable changes to the "javascript-test-runner" extension will be documented
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [1.0.1] - 2019-06011
+## [1.0.2] - 2019-06-11
+- Improved windows support https://github.com/g3offrey/javascript-test-runner/pull/27
+- Allow to pass environment variables
+
+## [1.0.1] - 2019-06-11
 - Added objectSpread for test-case parser
 
 ## [1.0.0] - 2018-07-22

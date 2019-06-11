@@ -2,7 +2,7 @@
   "name": "javascript-test-runner",
   "displayName": "JavaScript Test Runner",
   "description": "Run JavaScript tests easily using CodeLens",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "vaclav-purchart",
   "engines": {
     "vscode": "^1.18.0"
@@ -28,28 +28,32 @@
     "*"
   ],
   "contributes": {
-    "commands": [{
-      "command": "javascript-test-runner.run.test",
-      "title": "Run Test"
-    }],
-    "configuration": [{
-      "properties": {
-        "javascript-test-runner.additionalArgs": {
-          "type": "string",
-          "default": "",
-          "description": "CLI args to pass to test runner. Example : --watch",
-          "scope": "resource"
-        },
-        "javascript-test-runner.envVars": {
-          "type": "object",
-          "default": {
-            "NODE_ENV": "test"
+    "commands": [
+      {
+        "command": "javascript-test-runner.run.test",
+        "title": "Run Test"
+      }
+    ],
+    "configuration": [
+      {
+        "properties": {
+          "javascript-test-runner.additionalArgs": {
+            "type": "string",
+            "default": "",
+            "description": "CLI args to pass to test runner. Example : --watch",
+            "scope": "resource"
           },
-          "description": "Environment variables to set before running a test.",
-          "scope": "resource"
+          "javascript-test-runner.envVars": {
+            "type": "object",
+            "default": {
+              "NODE_ENV": "test"
+            },
+            "description": "Environment variables to set before running a test.",
+            "scope": "resource"
+          }
         }
       }
-    }]
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -64,7 +68,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run compile && npm run lint"
     }
   },
   "devDependencies": {

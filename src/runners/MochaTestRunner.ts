@@ -38,7 +38,12 @@ export class MochaTestRunner implements ITestRunnerInterface {
 			rootPath
 		)
 
-		terminal.sendText(command, true)
+		// terminal:env seems to not work :-(
+		const keys = Object.keys(environmentVariables)
+		const values = Object.values(environmentVariables)
+		const varsCmd = keys.map((key, i) => `${key}=${values[i]} `).join('')
+
+		terminal.sendText(`${varsCmd}${command}`, true)
 		terminal.show(true)
 	}
 
