@@ -10,27 +10,27 @@ import { codeParser } from '../../parser/codeParser'
 
 // Defines a Mocha test suite to group tests of similar kind together
 suite('codeParser Tests', () => {
-    // Defines a Mocha unit test
-    test('Valid Token', () => {
-        const code = `
+	// Defines a Mocha unit test
+	test('Valid Token', () => {
+		const code = `
             describe('Fake test', () => {});
         `
-        assert.equal(1, codeParser(code).length)
-    })
+		assert.equal(1, codeParser(code).length)
+	})
 
-    test('Invalid Tokens', () => {
-        const code = `
+	test('Invalid Tokens', () => {
+		const code = `
             var test = 'Fluo';
             let src = {test: true, type: 'BANK'};
             if (!src.test && src.type === 'BANK') {
                 let firstName = 'test';
             }
         `
-        assert.equal(0, codeParser(code).length)
-    })
+		assert.equal(0, codeParser(code).length)
+	})
 
-    test('Jsx syntax', () => {
-        const code = `
+	test('Jsx syntax', () => {
+		const code = `
         describe("JsonFormTextField", () => {
 
             test("Test render", () => {
@@ -49,6 +49,6 @@ suite('codeParser Tests', () => {
             });
         });
         `
-        assert.equal(2, codeParser(code).length)
-    })
+		assert.equal(2, codeParser(code).length)
+	})
 })

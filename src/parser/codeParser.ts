@@ -1,38 +1,39 @@
-import { parse } from "@babel/parser";
+import { parse } from "@babel/parser"
 
-const testTokens = ["describe", "it", "test"];
+const testTokens = ["describe", "it", "test"]
 
 function codeParser(sourceCode) {
-  const parserOptions = {
-    plugins: [
-      "jsx",
-      "typescript",
-      "objectRestSpread"
-    ],
-    sourceType: "module",
-    tokens: true,
-  };
-  const ast = parse(sourceCode, parserOptions);
+	const parserOptions = {
+		plugins: [
+			"jsx",
+			"typescript",
+			"objectRestSpread"
+		],
+		sourceType: 'module',
+		tokens: true,
+	}
+	// @ts-ignore
+	const ast = parse(sourceCode, parserOptions)
 
-  return ast.tokens
-    .map(({ value, loc, type }, index) => {
-      if (testTokens.indexOf(value) === -1) {
-        return;
-      }
-      if (type.label !== "name") {
-        return;
-      }
-      const nextToken = ast.tokens[index + 1];
-      if (!nextToken.type.startsExpr) {
-        return;
-      }
+	return ast.tokens
+		.map(({ value, loc, type }, index) => {
+			if (testTokens.indexOf(value) === -1) {
+				return
+			}
+			if (type.label !== "name") {
+				return
+			}
+			const nextToken = ast.tokens[index + 1]
+			if (!nextToken.type.startsExpr) {
+				return
+			}
 
-      return {
-        loc,
-        testName: ast.tokens[index + 2].value
-      };
-    })
-    .filter(Boolean);
+			return {
+				loc,
+				testName: ast.tokens[index + 2].value
+			}
+		})
+		.filter(Boolean)
 }
 
-export { codeParser };
+export { codeParser }
