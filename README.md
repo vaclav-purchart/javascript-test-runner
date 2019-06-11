@@ -1,3 +1,5 @@
+Based on https://github.com/g3offrey/javascript-test-runner
+
 # JavaScript Test Runner
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
